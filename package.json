@@ -1,0 +1,19 @@
+{
+  "name": "weekplan",
+  "version": "1.0.0",
+  "description": "Wowé",
+  "main": "index.js",
+  "dependencies": {
+    "next": "^8.0.3",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "author": "Étienne Després",
+  "license": "BSD-2-Clause"
+}
