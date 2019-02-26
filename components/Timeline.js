@@ -19,6 +19,7 @@ function Timeline({ assignProjectToHour, weeks, getProject }) {
               hours={weeks[weekId]}
               assignProjectToHour={assignProjectToHour}
               getProject={getProject}
+              offset={i}
             />
           </li>
         );
@@ -28,6 +29,18 @@ function Timeline({ assignProjectToHour, weeks, getProject }) {
         ul {
           display: flex;
           flex-direction: column;
+        }
+        
+        @media (min-width: 768px) {
+          ul {
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+          }
+          
+          li {
+            width: calc(33.33% - 0.666em);
+          }
         }
       `}</style>
     </ul>

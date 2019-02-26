@@ -20,6 +20,12 @@ function Project({ id, name, color, selected, select }) {
         button.selected {
           background-color: #ddd;
         }
+        
+        @media (min-width: 768px) {
+          button {
+            margin-bottom: 1em;
+          }
+        }
       `}</style>
     </div>
   );

@@ -18,7 +18,7 @@ function ProjectList({ projects, addProject, selectProject, selectedProject }) {
             </li>
           );
         })}
-        <li><NewProjectButton addProject={addProject.bind(this)}/></li>
+        <li key="new"><NewProjectButton addProject={addProject.bind(this)}/></li>
       </ul>
       <style jsx>{`
         div {
@@ -29,6 +29,28 @@ function ProjectList({ projects, addProject, selectProject, selectedProject }) {
           width: 100%;
           border-top: 1px solid #ccc;
           background-color: white;
+        }
+        
+        ul {
+          display: flex;
+          flex-direction: column;
+        }
+        
+        @media (min-width: 768px) {
+          div {
+            padding-right: 0;
+            padding-bottom: 0;
+          }
+
+          ul {
+            display: block;
+          }
+          
+          li {
+            float: left;
+            width: calc(33.33% - 1em);
+            margin-right: 1em;
+          }
         }
       `}</style>
     </div>

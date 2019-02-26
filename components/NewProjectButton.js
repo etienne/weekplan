@@ -68,6 +68,12 @@ class NewProjectButton extends React.Component {
             border: 1px solid #ccc;
             width: 100%;
           }
+          
+          @media (min-width: 768px) {
+            button, input {
+              margin-bottom: 1em;
+            }
+          }
         `}</style>
       </div>
     );

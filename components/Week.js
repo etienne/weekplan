@@ -51,10 +51,16 @@ class Week extends React.Component {
           section {
             margin-bottom: 1.5em;
           }
+          
+          h2 {
+            font-size: 1em;
+          }
+          
           ul {
             display: flex;
             flex-wrap: wrap;
           }
+
           li {
             width: ${100 / hoursPerRow}%;
           }
