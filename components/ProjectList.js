@@ -3,7 +3,7 @@ import Project from '../components/Project';
 
 function ProjectList({ projects, addProject, selectProject, selectedProject }) {
   return (
-    <div>
+    <div onClick={selectProject.bind(this, null)}>
       <ul>
         { projects.map((project, i) => {
           return (
@@ -50,6 +50,12 @@ function ProjectList({ projects, addProject, selectProject, selectedProject }) {
             float: left;
             width: calc(33.33% - 1em);
             margin-right: 1em;
+          }
+        }
+        
+        @media (min-width: 1024px) {
+          li {
+            width: calc(25% - 1em);
           }
         }
       `}</style>

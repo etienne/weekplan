@@ -50,8 +50,9 @@ class NewProjectButton extends React.Component {
           button.new {
             display: block;
             width: 100%;
-            border: 1px dashed #ccc;
-            background-color: transparent;
+            background-color: #0179FF;
+            color: white;
+            cursor: pointer;
           }
     
           button.new::before {
@@ -61,7 +62,11 @@ class NewProjectButton extends React.Component {
             top: 0.05em;
             font-size: 1.5em;
             line-height: 0;
-            color: #aaa;
+            color: rgba(255, 255, 255, 0.5);
+          }
+          
+          button.new:hover {
+            background-color: #016BE2;
           }
           
           input {

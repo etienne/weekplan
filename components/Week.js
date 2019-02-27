@@ -13,18 +13,6 @@ class Week extends React.Component {
     }
   }
   
-  startSelection(hourId) {
-    console.log('start selection', hourId);
-  }
-  
-  endSelection(hourId) {
-    console.log('stop selection', hourId);
-  }
-  
-  handleMouseUp() {
-    console.log('mouse uppppp');
-  }
-  
   render() {
     const { offset, assignProjectToHour, date, hours, weekId, getProject } = this.props;
     const weekOf = date.toLocaleDateString('fr-CA', { day: 'numeric', month: 'long' });
@@ -37,8 +25,7 @@ class Week extends React.Component {
           { [...Array(publicRuntimeConfig.hoursPerWeek)].map((x, i) =>
             <li key={i}>
               <Hour
-                startSelection={this.startSelection.bind(this)}
-                endSelection={this.endSelection.bind(this)}
+                assignProjectToHour={assignProjectToHour}
                 weekId={weekId}
                 hourId={i}
                 projectId={hours ? hours[i] : undefined}

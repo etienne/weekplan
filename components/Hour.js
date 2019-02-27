@@ -1,15 +1,20 @@
-function Hour({ startSelection, endSelection, weekId, hourId, projectId, getProject }) {
+function Hour({ assignProjectToHour, weekId, hourId, projectId, getProject }) {
   const project = getProject(projectId);
 
   return (
-    <div onDragStart={startSelection.bind(this, hourId)} onDragEnd={endSelection.bind(this, hourId)} >
+    <div onClick={assignProjectToHour.bind(this, weekId, hourId)}>
       <style jsx>{`
         div {
-          background-color: ${project ? project.color : '#ddd'};
+          background-color: ${project ? project.color : '#eee'};
           margin-right: 1px;
           margin-bottom: 1px;
           height: 0;
           padding-bottom: 100%;
+          cursor: pointer;
+        }
+        
+        div:hover {
+          background-color: ${project ? project.color : '#ddd'}
         }
       `}</style>
     </div>

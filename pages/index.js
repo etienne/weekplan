@@ -36,8 +36,9 @@ class Index extends React.Component {
     });
   }
   
-  selectProject(id) {
+  selectProject(id, event) {
     this.setState({ selectedProject: id });
+    event.stopPropagation();
   }
   
   assignProjectToHour(weekId, hourId) {
@@ -86,7 +87,7 @@ class Index extends React.Component {
             background: white;
             color: black;
             font-family: system-ui;
-            margin: 1em;
+            margin: 1em 0 1em 1em;
             padding: 0;
           }
         

@@ -33,13 +33,19 @@ function Timeline({ assignProjectToHour, weeks, getProject }) {
         
         @media (min-width: 768px) {
           ul {
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: space-between;
+            display: block;
           }
           
           li {
-            width: calc(33.33% - 0.666em);
+            float: left;
+            width: calc(33.33% - 1em);
+            margin-right: 1em;
+          }
+        }
+        
+        @media (min-width: 1024px) {
+          li {
+            width: calc(25% - 1em);
           }
         }
       `}</style>

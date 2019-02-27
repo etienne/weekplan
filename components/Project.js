@@ -7,18 +7,31 @@ function Project({ id, name, color, selected, select }) {
       <style jsx>{`
         button {
           width: 100%;
+          position: relative;
           background: transparent;
           border: 1px solid #ddd;
           margin-bottom: 0.5em;
+          text-align: left;
+          padding-left: 1.9em;
+        }
+        
+        button:hover {
+          background-color: #eee;
         }
         
         button::before {
-          content: '!!',
-          border: 1px solid blue;
+          content: '';
+          width: 0.8em;
+          height: 0.8em;
+          top: 0.7em;
+          left: 0.6em;
+          border-radius: 0.2em;
+          background-color: ${color};
+          position: absolute;
         }
         
         button.selected {
-          background-color: #ddd;
+          background-color: #ccc;
         }
         
         @media (min-width: 768px) {
