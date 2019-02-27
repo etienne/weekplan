@@ -1,34 +1,42 @@
 import React from 'react';
 import Head from 'next/head';
+import getConfig from 'next/config';
 import ProjectList from '../components/ProjectList';
 import Timeline from '../components/Timeline';
+
+const { publicRuntimeConfig } = getConfig()
 
 class Index extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      projects: [],
+      projects: {},
       selectedProject: null,
       weeks: {},
     }
   }
   
   getNextAvailableId() {
-    console.warn('Assigned fake id 4');
-    return 4;
+    const existingIds = Object.keys(this.state.projects);
+    
+    if (existingIds.length) {
+      return Number(existingIds.sort((a, b) => b - a)[0]) + 1;
+    }
+    
+    return 1;
   }
   
   getProject(id) {
-    return this.state.projects.find(project => project.id === id);
+    return this.state.projects[id];
   } 
   
   addProject(project) {
+    const colors = publicRuntimeConfig.colors;
     project.id = this.getNextAvailableId();
-    project.color = 'red';
-    console.warn('Assigned fake color red');
+    project.color = colors[(project.id % colors.length) - 1];
     this.setState((state, props) => {
       const projects = state.projects;
-      projects.push(project);
+      projects[project.id] = project;
       return {
         projects,
         ...state,

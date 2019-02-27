@@ -5,7 +5,9 @@ function ProjectList({ projects, addProject, selectProject, selectedProject }) {
   return (
     <div onClick={selectProject.bind(this, null)}>
       <ul>
-        { projects.map((project, i) => {
+        { Object.keys(projects).map((id, i) => {
+          const project = projects[id];
+
           return (
             <li key={i}>
               <Project
