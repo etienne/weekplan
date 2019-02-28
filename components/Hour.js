@@ -1,8 +1,8 @@
-function Hour({ assignProjectToHour, weekId, hourId, projectId, getProject }) {
+function Hour({ weekId, hourId, projectId, getProject, mouseEnter, mouseDown, mouseUp }) {
   const project = getProject(projectId);
-
+  
   return (
-    <div onClick={assignProjectToHour.bind(this, weekId, hourId)}>
+    <div onMouseEnter={mouseEnter.bind(this, hourId)} onMouseUp={mouseUp} onMouseDown={mouseDown.bind(this, hourId)}>
       <style jsx>{`
         div {
           background-color: ${project ? project.color : '#eee'};
