@@ -1,13 +1,6 @@
+import { isLight } from '../helpers/utils';
+
 function Project({ id, count, name, color, selected, select }) {
-  // https://stackoverflow.com/questions/12043187/how-to-check-if-hex-color-is-too-black#12043228
-  const c = color.substring(1);
-  const rgb = parseInt(c, 16);
-  const r = (rgb >> 16) & 0xff;
-  const g = (rgb >>  8) & 0xff;
-  const b = (rgb >>  0) & 0xff;
-  const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b;
-  const isLight = luma > 40 ? true : false;  
-  
   return (
     <div>
       <button className={selected ? 'selected' : undefined} onClick={select.bind(this, id)}>
@@ -44,7 +37,7 @@ function Project({ id, count, name, color, selected, select }) {
         
         button.selected {
           background-color: ${color};
-          color: ${isLight ? 'black' : 'white'};
+          color: ${isLight(color) ? 'black' : 'white'};
         }
         
         span.count {
@@ -54,7 +47,7 @@ function Project({ id, count, name, color, selected, select }) {
         }
         
         button.selected span.count {
-          color: rgba(${isLight ? '0, 0, 0' : '255, 255, 255'}, 0.5);
+          color: rgba(${isLight(color) ? '0, 0, 0' : '255, 255, 255'}, 0.5);
         }
         
         @media (min-width: 768px) {

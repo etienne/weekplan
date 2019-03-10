@@ -31,24 +31,36 @@ class Week extends React.Component {
     const { offset, date, hours, weekId, getProject } = this.props;
     const weekOf = date.toLocaleDateString('fr-CA', { day: 'numeric', month: 'long' });
     const hoursPerRow = Math.ceil(Math.sqrt(publicRuntimeConfig.hoursPerWeek)) + 1;
+    const labelledProjects = {};
   
     return (
       <section>
         <h2>{ offset === 0 ? 'Cette semaine' : `Semaine du ${weekOf}`}</h2>
         <ul>
-          { [...Array(publicRuntimeConfig.hoursPerWeek)].map((x, i) =>
-            <li key={i}>
-              <Hour
-                mouseDown={this.mouseDownHour.bind(this)}
-                mouseEnter={this.mouseEnterHour.bind(this)}
-                mouseUp={this.mouseUpHour.bind(this)}
-                weekId={weekId}
-                hourId={i}
-                projectId={hours ? hours[i] : undefined}
-                getProject={getProject}
-              />
-            </li>
-          ) }
+          { [...Array(publicRuntimeConfig.hoursPerWeek)].map((x, i) => {
+            const projectId = hours ? hours[i] : undefined;
+            let showLabel = false;
+            
+            if (projectId) {
+              showLabel = labelledProjects[projectId] ? false : true;
+              labelledProjects[projectId] = true;
+            }
+            
+            return (
+              <li key={i}>
+                <Hour
+                  mouseDown={this.mouseDownHour.bind(this)}
+                  mouseEnter={this.mouseEnterHour.bind(this)}
+                  mouseUp={this.mouseUpHour.bind(this)}
+                  weekId={weekId}
+                  hourId={i}
+                  projectId={hours ? hours[i] : undefined}
+                  getProject={getProject}
+                  showLabel={showLabel}
+                />
+              </li>
+            );
+          }) }
         </ul>
         <style jsx>{`
           section {
