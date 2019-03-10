@@ -23,6 +23,7 @@ function Project({ id, count, name, color, selected, select }) {
           margin-bottom: 0.5em;
           text-align: left;
           padding-left: 1.9em;
+          cursor: pointer;
         }
         
         button:hover {
@@ -53,7 +54,7 @@ function Project({ id, count, name, color, selected, select }) {
         }
         
         button.selected span.count {
-          color: rgba(${isLight ? '0, 0, 0' : '255, 255, 255'}, 0.4);
+          color: rgba(${isLight ? '0, 0, 0' : '255, 255, 255'}, 0.5);
         }
         
         @media (min-width: 768px) {

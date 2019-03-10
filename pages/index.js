@@ -38,8 +38,9 @@ class Index extends React.Component {
       const projects = state.projects;
       projects[project.id] = project;
       return {
-        projects,
         ...state,
+        projects,
+        selectedProject: project.id,
       };
     });
   }
