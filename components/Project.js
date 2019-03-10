@@ -1,4 +1,4 @@
-function Project({ id, name, color, selected, select }) {
+function Project({ id, count, name, color, selected, select }) {
   // https://stackoverflow.com/questions/12043187/how-to-check-if-hex-color-is-too-black#12043228
   const c = color.substring(1);
   const rgb = parseInt(c, 16);
@@ -12,6 +12,7 @@ function Project({ id, name, color, selected, select }) {
     <div>
       <button className={selected ? 'selected' : undefined} onClick={select.bind(this, id)}>
         {name}
+        {count > 0 && <span className="count">{count}</span>}
       </button>
       <style jsx>{`
         button {
@@ -45,7 +46,14 @@ function Project({ id, name, color, selected, select }) {
           color: ${isLight ? 'black' : 'white'};
         }
         
-        button.selected::before {
+        span.count {
+          float: right;
+          font-size: 0.8em;
+          color: rgba(0, 0, 0, 0.4);
+        }
+        
+        button.selected span.count {
+          color: rgba(${isLight ? '0, 0, 0' : '255, 255, 255'}, 0.4);
         }
         
         @media (min-width: 768px) {

@@ -1,7 +1,7 @@
 module.exports = {
   publicRuntimeConfig: {
     hoursPerWeek: 24,
-    visibleWeeks: 8,
+    visibleWeeks: 12,
     colors: [
       '#A7F3F0',
       '#0B1099',

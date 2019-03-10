@@ -44,6 +44,19 @@ class Index extends React.Component {
     });
   }
   
+  countHours(projectId) {
+    let total = 0;
+
+    for (const week in this.state.weeks) {
+      if (this.state.weeks.hasOwnProperty(week)) {
+        const hours = this.state.weeks[week];
+        total += Object.values(hours).filter(v => v === projectId).length;
+      }
+    }
+    
+    return total;
+  }
+  
   selectProject(id, event) {
     this.setState({ selectedProject: id });
     event.stopPropagation();
@@ -81,6 +94,7 @@ class Index extends React.Component {
           getProject={this.getProject.bind(this)}
         />
         <ProjectList
+          countHours={this.countHours.bind(this)}
           projects={this.state.projects}
           addProject={this.addProject.bind(this)}
           selectProject={this.selectProject.bind(this)}
