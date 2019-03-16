@@ -4,7 +4,7 @@ import getConfig from 'next/config';
 import ProjectList from '../components/ProjectList';
 import Timeline from '../components/Timeline';
 
-const { publicRuntimeConfig } = getConfig()
+const { publicRuntimeConfig } = getConfig();
 
 class Index extends React.Component {
   constructor(props) {
@@ -13,6 +13,24 @@ class Index extends React.Component {
       projects: {},
       selectedProject: null,
       weeks: {},
+    }
+  }
+  
+  componentDidUpdate() {
+    if (process.browser) {
+      fetch(publicRuntimeConfig.serverEndpoint, {
+        method: 'POST',
+        body: JSON.stringify(this.state),
+        headers: { 'Content-Type': 'application/json' },
+      }).catch(error => console.error('Error:', error));
+    }
+  }
+  
+  componentDidMount() {
+    if (process.browser) {
+      fetch(publicRuntimeConfig.serverEndpoint).then(res => res.json()).then(json => {
+        this.setState(json);
+      });
     }
   }
   
