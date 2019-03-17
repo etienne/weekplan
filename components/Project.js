@@ -1,29 +1,47 @@
 import { isLight } from '../helpers/utils';
 
-function Project({ id, count, name, color, selected, select }) {
+function Project({ id, count, name, color, selected, select, edit }) {
   return (
     <div>
-      <button className={selected ? 'selected' : undefined} onClick={select.bind(this, id)}>
+      <button className={selected ? 'project selected' : 'project'} onClick={select.bind(this, id)}>
         {name}
         {count > 0 && <span className="count">{count}</span>}
       </button>
+      <button className="edit" onClick={edit.bind(this, id)}><img src="/static/edit.svg" /></button>
       <style jsx>{`
-        button {
+        div {
           width: 100%;
-          position: relative;
-          background: transparent;
+          display: flex;
+        }
+        
+        button {
           border: 1px solid #ddd;
+          background: transparent;
           margin-bottom: 0.5em;
           text-align: left;
-          padding-left: 1.9em;
           cursor: pointer;
+        }
+        
+        button.project {
+          width: 88%;
+          position: relative;
+          padding-left: 1.9em;
         }
         
         button:hover {
           background-color: #eee;
         }
         
-        button::before {
+        button.edit {
+          width: 12%;
+          border-left: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        
+        button.project::before {
+          position: absolute;
           content: '';
           width: 0.8em;
           height: 0.8em;
@@ -32,7 +50,6 @@ function Project({ id, count, name, color, selected, select }) {
           border: 1px solid white;
           border-radius: 0.2em;
           background-color: ${color};
-          position: absolute;
         }
         
         button.selected {

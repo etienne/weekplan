@@ -1,7 +1,7 @@
 import NewProjectButton from '../components/NewProjectButton';
 import Project from '../components/Project';
 
-function ProjectList({ projects, countHours, addProject, selectProject, selectedProject }) {
+function ProjectList({ projects, countHours, addProject, selectProject, selectedProject, editProject }) {
   return (
     <div onClick={selectProject.bind(this, null)}>
       <ul>
@@ -17,6 +17,7 @@ function ProjectList({ projects, countHours, addProject, selectProject, selected
                 color={project.color}
                 select={selectProject}
                 selected={selectedProject === project.id}
+                edit={editProject}
               />
             </li>
           );

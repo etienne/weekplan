@@ -2,6 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import getConfig from 'next/config';
 import ProjectList from '../components/ProjectList';
+import ProjectEditor from '../components/ProjectEditor';
 import Timeline from '../components/Timeline';
 
 const { publicRuntimeConfig } = getConfig();
@@ -63,6 +64,15 @@ class Index extends React.Component {
     });
   }
   
+  updateProject(name, color) {
+    this.setState((state, props) => {
+      state.projects[this.state.editingProject].name = name;
+      state.projects[this.state.editingProject].color = color;
+      state.editingProject = null;
+      return state;
+    });
+  }
+  
   countHours(projectId) {
     let total = 0;
 
@@ -81,11 +91,11 @@ class Index extends React.Component {
     event.stopPropagation();
   }
   
+  editProject(id) {
+    this.setState({ editingProject: id });
+  }
+  
   assignProjectToHour(weekId, hourId) {
-    if (!this.state.selectedProject) {
-      console.error('Could not assign project to hour because there is no selected project');
-      return;
-    }
     this.setState((state, props) => {
       const updatedWeeks = state.weeks;
       if (updatedWeeks[weekId]) {
@@ -101,6 +111,8 @@ class Index extends React.Component {
   }
   
   render() {
+    const editedProject = this.state.editingProject && this.state.projects[this.state.editingProject];
+
     return (
       <div>
         <Head>
@@ -118,7 +130,11 @@ class Index extends React.Component {
           addProject={this.addProject.bind(this)}
           selectProject={this.selectProject.bind(this)}
           selectedProject={this.state.selectedProject}
+          editProject={this.editProject.bind(this)}
         />
+        { editedProject && (
+          <ProjectEditor name={editedProject.name} color={editedProject.color} update={this.updateProject.bind(this)} />
+        ) }
         <style global jsx>{`
           * {
             box-sizing: border-box;
