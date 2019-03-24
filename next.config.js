@@ -1,6 +1,6 @@
 module.exports = {
   publicRuntimeConfig: {
-    serverEndpoint: 'http://localhost:5000/index.php',
+    serverEndpoint: process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:5000/api',
     hoursPerWeek: 24,
     visibleWeeks: 12,
     colors: [
