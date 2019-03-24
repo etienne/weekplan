@@ -9,7 +9,7 @@ npm install
 echo "{}" > api/store.json
 ```
 
-### Usage
+## Usage
 
 ```
 npm run dev
