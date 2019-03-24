@@ -1,7 +1,7 @@
 module.exports = {
   publicRuntimeConfig: {
     serverEndpoint: process.env.NODE_ENV === 'development' ? 'http://localhost:5000/api' : '/api',
-    hoursPerWeek: 24,
+    hoursPerWeek: 28,
     visibleWeeks: 12,
     colors: [
       '#A7F3F0',
