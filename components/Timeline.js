@@ -9,8 +9,9 @@ function Timeline({ assignProjectToHour, weeks, getProject }) {
       { [...Array(publicRuntimeConfig.visibleWeeks)].map((x, i) => {
         const date = new Date();
         date.setHours(0, 0, 0, 0);
-        date.setDate(date.getDate() - date.getDay() + 1 + (i * 7));
+        date.setDate(date.getDate() - (date.getDay() || 7) + 1 + (i * 7));
         const weekId = date.valueOf();
+        
         return (
           <li key={i}>
             <Week
