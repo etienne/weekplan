@@ -75,9 +75,11 @@ class Index extends React.Component {
   
   countHours(projectId) {
     let total = 0;
+    const weekAgo = new Date();
+    weekAgo.setDate(weekAgo.getDate() - 7);
 
     for (const week in this.state.weeks) {
-      if (this.state.weeks.hasOwnProperty(week)) {
+      if (this.state.weeks.hasOwnProperty(week) && week > weekAgo.valueOf()) {
         const hours = this.state.weeks[week];
         total += Object.values(hours).filter(v => v === projectId).length;
       }
