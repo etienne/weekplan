@@ -34,6 +34,7 @@ function ProjectList({ projects, countHours, addProject, selectProject, selected
           border-top: 1px solid #ccc;
           background-color: white;
           box-shadow: 0 0 30px 5px rgba(0, 0, 0, 0.1);
+          z-index: 2;
         }
         
         ul {
