@@ -23,7 +23,6 @@ function Project({ id, count, name, color, selected, select, edit }) {
         }
         
         button.project {
-          width: 88%;
           position: relative;
           padding-left: 1.9em;
         }
@@ -33,7 +32,7 @@ function Project({ id, count, name, color, selected, select, edit }) {
         }
         
         button.edit {
-          width: 12%;
+          width: 2.5em;
           border-left: 0;
           display: flex;
           justify-content: center;
@@ -59,6 +58,8 @@ function Project({ id, count, name, color, selected, select, edit }) {
         
         span.count {
           float: right;
+          margin-top: 3px;
+          padding-left: 1em;
           font-size: 0.8em;
           color: rgba(0, 0, 0, 0.4);
         }

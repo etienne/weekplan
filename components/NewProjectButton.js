@@ -43,7 +43,7 @@ class NewProjectButton extends React.Component {
           : (
               <button className="new" onClick={this.toggleEditMode.bind(this)}>
                 Nouveau projet
-              </button> 
+              </button>
             )
         }
         <style jsx>{`
@@ -53,6 +53,8 @@ class NewProjectButton extends React.Component {
             background-color: transparent;
             border: 1px dashed #ccc;
             cursor: pointer;
+            padding-left: 1em;
+            padding-right: 1em;
           }
     
           button.new::before {
