@@ -52,7 +52,7 @@ class Index extends React.Component {
   addProject(project) {
     const colors = publicRuntimeConfig.colors;
     project.id = this.getNextAvailableId();
-    project.color = colors[(project.id % colors.length) - 1];
+    project.color = colors[((project.id - 1) % colors.length)];
     this.setState((state, props) => {
       const projects = state.projects;
       projects[project.id] = project;
