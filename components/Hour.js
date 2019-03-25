@@ -1,11 +1,16 @@
 import { isLight } from '../helpers/utils';
 
-function Hour({ weekId, hourId, projectId, getProject, mouseEnter, mouseDown, mouseUp, showLabel }) {
+function Hour({ weekId, hourId, projectId, getProject, mouseEnter, mouseDown, mouseUp, showLabel, count }) {
   const project = getProject(projectId);
   
   return (
     <div onMouseEnter={mouseEnter.bind(this, hourId)} onMouseUp={mouseUp} onMouseDown={mouseDown.bind(this, hourId)}>
-      { showLabel && <span>{project.name}</span> }
+      { showLabel && (
+        <span className="label">
+          {project.name}
+          {count && <span className="count">{count}</span>}
+        </span>
+      ) }
       <style jsx>{`
         div {
           position: relative;
@@ -17,7 +22,7 @@ function Hour({ weekId, hourId, projectId, getProject, mouseEnter, mouseDown, mo
           cursor: pointer;
         }
         
-        span {
+        span.label {
           position: absolute;
           width: max-content;
           z-index: 1;
@@ -28,8 +33,13 @@ function Hour({ weekId, hourId, projectId, getProject, mouseEnter, mouseDown, mo
           border-radius: 3px;
           padding: 0.2em 0.4em;
           background-color: ${project ? project.color : 'transparent'};
-          color: ${project && !isLight(project.color) ? 'rgba(255, 255, 255, 0.7)' : 'rgba(0, 0, 0, 0.6)'};
+          color: ${project && !isLight(project.color) ? 'rgba(255, 255, 255, 0.8)' : 'rgba(0, 0, 0, 0.7)'};
           box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.15);
+        }
+        
+        span.count {
+          padding-left: 0.6em;
+          color: ${project && !isLight(project.color) ? 'rgba(255, 255, 255, 0.4)' : 'rgba(0, 0, 0, 0.3)'};
         }
         
         div:hover {

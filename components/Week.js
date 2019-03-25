@@ -32,7 +32,18 @@ class Week extends React.Component {
     const weekOf = date.toLocaleDateString('fr-CA', { day: 'numeric', month: 'long' });
     const hoursPerRow = Math.ceil(Math.sqrt(publicRuntimeConfig.hoursPerWeek)) + 1;
     const labelledProjects = {};
-  
+    const hoursByProject = {};
+    
+    if (hours) {
+      for (const hour in hours) {
+        if (hours.hasOwnProperty(hour) && hours[hour]) {
+          const projectId = hours[hour];
+          const currentHourCount = hoursByProject[projectId];
+          hoursByProject[projectId] = currentHourCount ? currentHourCount + 1 : 1;
+        }
+      }
+    }
+      
     return (
       <section>
         <h2>{ offset === 0 ? 'Cette semaine' : `Semaine du ${weekOf}`}</h2>
@@ -54,7 +65,8 @@ class Week extends React.Component {
                   mouseUp={this.mouseUpHour.bind(this)}
                   weekId={weekId}
                   hourId={i}
-                  projectId={hours ? hours[i] : undefined}
+                  projectId={projectId}
+                  count={hoursByProject[projectId]}
                   getProject={getProject}
                   showLabel={showLabel}
                 />
