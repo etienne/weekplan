@@ -5,7 +5,7 @@ const { publicRuntimeConfig } = getConfig()
 
 function Timeline({ assignProjectToHour, weeks, getProject }) {
   return (
-    <ul>
+    <ul className="Timeline">
       { [...Array(publicRuntimeConfig.visibleWeeks)].map((x, i) => {
         const date = new Date();
         date.setHours(0, 0, 0, 0);
@@ -30,6 +30,7 @@ function Timeline({ assignProjectToHour, weeks, getProject }) {
         ul {
           display: flex;
           flex-direction: column;
+          padding: 1em;
         }
         
         @media (min-width: 768px) {
@@ -39,14 +40,14 @@ function Timeline({ assignProjectToHour, weeks, getProject }) {
           
           li {
             float: left;
-            width: calc(33.33% - 1em);
+            width: calc(50% - 1em);
             margin-right: 1em;
           }
         }
         
         @media (min-width: 1024px) {
           li {
-            width: calc(25% - 1em);
+            width: calc(33.33% - 1em);
           }
         }
       `}</style>

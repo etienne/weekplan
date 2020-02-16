@@ -13,6 +13,5 @@ echo "{}" > api/store.json
 
 ```
 npm run dev
-cd api
-php -S localhost:5000
+php -S localhost:5000 -t api/
 ```

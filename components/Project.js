@@ -15,14 +15,15 @@ function Project({ id, count, name, color, selected, select, edit }) {
         }
         
         button {
-          border: 1px solid #ddd;
+          border: 0;
+          border-radius: 0.2em;
           background: transparent;
-          margin-bottom: 0.5em;
           text-align: left;
           cursor: pointer;
         }
         
         button.project {
+          width: 85%;
           position: relative;
           padding-left: 1.9em;
         }
@@ -32,7 +33,7 @@ function Project({ id, count, name, color, selected, select, edit }) {
         }
         
         button.edit {
-          width: 2.5em;
+          width: 15%;
           border-left: 0;
           display: flex;
           justify-content: center;
@@ -66,12 +67,6 @@ function Project({ id, count, name, color, selected, select, edit }) {
         
         button.selected span.count {
           color: rgba(${isLight(color) ? '0, 0, 0' : '255, 255, 255'}, 0.5);
-        }
-        
-        @media (min-width: 768px) {
-          button {
-            margin-bottom: 1em;
-          }
         }
       `}</style>
     </div>

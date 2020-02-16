@@ -146,10 +146,15 @@ class Index extends React.Component {
             background: white;
             color: black;
             font-family: system-ui;
-            margin: 1em 0 1em 1em;
+            margin: 0;
             padding: 0;
           }
-        
+          
+          div {
+            display: flex;
+            flex-direction: column;
+          }
+          
           ul, li {
             margin: 0;
             padding: 0;
@@ -164,6 +169,20 @@ class Index extends React.Component {
           input, button {
             font-size: 1em;
             padding: 0.5em;
+          }
+          
+          @media (min-width: 768px) {
+            div {
+              flex-direction: row;
+            }
+            
+            .Timeline {
+              order: 2;
+            }
+            
+            .ProjectList {
+              order: 1;
+            }
           }
         `}</style>
       </div>
