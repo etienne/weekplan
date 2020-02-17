@@ -64,11 +64,12 @@ class Index extends React.Component {
     });
   }
   
-  updateProject(name, color, note) {
+  updateProject(name, color, note, archived) {
     this.setState((state, props) => {
       state.projects[this.state.editingProject].name = name;
       state.projects[this.state.editingProject].color = color;
       state.projects[this.state.editingProject].note = note;
+      state.projects[this.state.editingProject].archived = archived;
       state.editingProject = null;
       return state;
     });
@@ -136,7 +137,7 @@ class Index extends React.Component {
           editProject={this.editProject.bind(this)}
         />
         { editedProject && (
-          <ProjectEditor name={editedProject.name} color={editedProject.color} note={editedProject.note} update={this.updateProject.bind(this)} />
+          <ProjectEditor name={editedProject.name} color={editedProject.color} note={editedProject.note} archived={editedProject.archived} update={this.updateProject.bind(this)} />
         ) }
         <style global jsx>{`
           * {

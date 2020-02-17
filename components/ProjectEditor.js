@@ -4,6 +4,7 @@ function ProjectEditor(props) {
   const [name, setName] = useState(props.name);
   const [color, setColor] = useState(props.color);
   const [note, setNote] = useState(props.note);
+  const [archived, setArchived] = useState(props.archived);
 
   function handleNameChange(event) {
     setName(event.target.value);
@@ -16,7 +17,11 @@ function ProjectEditor(props) {
   function handleNoteChange(event) {
     setNote(event.target.value);
   }
-  
+
+  function handleArchivedChange(event) {
+    setArchived(event.target.checked);
+  }
+
   return (
     <div>
       <section>
@@ -26,7 +31,9 @@ function ProjectEditor(props) {
         <input type="color" id="color" value={color} onChange={handleColorChange} />
         <label htmlFor="note">Note</label>
         <input type="text" id="note" value={note} onChange={handleNoteChange} />
-        <button onClick={props.update.bind(this, name, color, note)}>Enregistrer</button>
+        <label htmlFor="archived">Archivé</label>
+        <input type="checkbox" id="archived" checked={archived} onChange={handleArchivedChange} />
+        <button onClick={props.update.bind(this, name, color, note, archived)}>Enregistrer</button>
       </section>
       <style jsx>{`
         div {

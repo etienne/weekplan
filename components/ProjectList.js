@@ -16,6 +16,7 @@ function ProjectList({ projects, countHours, addProject, selectProject, selected
                 name={project.name}
                 color={project.color}
                 note={project.note}
+                archived={project.archived}
                 select={selectProject}
                 selected={selectedProject === project.id}
                 edit={editProject}
