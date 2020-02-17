@@ -64,10 +64,11 @@ class Index extends React.Component {
     });
   }
   
-  updateProject(name, color) {
+  updateProject(name, color, note) {
     this.setState((state, props) => {
       state.projects[this.state.editingProject].name = name;
       state.projects[this.state.editingProject].color = color;
+      state.projects[this.state.editingProject].note = note;
       state.editingProject = null;
       return state;
     });
@@ -135,7 +136,7 @@ class Index extends React.Component {
           editProject={this.editProject.bind(this)}
         />
         { editedProject && (
-          <ProjectEditor name={editedProject.name} color={editedProject.color} update={this.updateProject.bind(this)} />
+          <ProjectEditor name={editedProject.name} color={editedProject.color} note={editedProject.note} update={this.updateProject.bind(this)} />
         ) }
         <style global jsx>{`
           * {
@@ -166,7 +167,7 @@ class Index extends React.Component {
             padding: 0;
           }
         
-          input, button {
+          input[type=text], button {
             font-size: 1em;
             padding: 0.5em;
           }

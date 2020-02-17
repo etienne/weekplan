@@ -15,6 +15,7 @@ function ProjectList({ projects, countHours, addProject, selectProject, selected
                 count={countHours(project.id)}
                 name={project.name}
                 color={project.color}
+                note={project.note}
                 select={selectProject}
                 selected={selectedProject === project.id}
                 edit={editProject}

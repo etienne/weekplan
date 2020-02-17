@@ -48,6 +48,7 @@ class NewProjectButton extends React.Component {
         }
         <style jsx>{`
           button.new {
+            margin-top: 1em;
             display: block;
             width: 100%;
             background-color: transparent;

@@ -3,6 +3,7 @@ import { useState } from 'react';
 function ProjectEditor(props) {
   const [name, setName] = useState(props.name);
   const [color, setColor] = useState(props.color);
+  const [note, setNote] = useState(props.note);
 
   function handleNameChange(event) {
     setName(event.target.value);
@@ -11,6 +12,10 @@ function ProjectEditor(props) {
   function handleColorChange(event) {
     setColor(event.target.value);
   }
+
+  function handleNoteChange(event) {
+    setNote(event.target.value);
+  }
   
   return (
     <div>
@@ -18,8 +23,10 @@ function ProjectEditor(props) {
         <label htmlFor="name">Nom du projet</label>
         <input type="text" id="name" value={name} onChange={handleNameChange} />
         <label htmlFor="color">Couleur</label>
-        <input type="text" id="color" value={color} onChange={handleColorChange} />
-        <button onClick={props.update.bind(this, name, color)}>Enregistrer</button>
+        <input type="color" id="color" value={color} onChange={handleColorChange} />
+        <label htmlFor="note">Note</label>
+        <input type="text" id="note" value={note} onChange={handleNoteChange} />
+        <button onClick={props.update.bind(this, name, color, note)}>Enregistrer</button>
       </section>
       <style jsx>{`
         div {

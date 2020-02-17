@@ -50,6 +50,13 @@ function Timeline({ assignProjectToHour, weeks, getProject }) {
             width: calc(33.33% - 1em);
           }
         }
+
+        @media (min-width: 1600px) {
+          li {
+            width: calc(25% - 1em);
+          }
+        }
+
       `}</style>
     </ul>
   )
