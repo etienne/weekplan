@@ -47,8 +47,11 @@ class NewProjectButton extends React.Component {
             )
         }
         <style jsx>{`
-          button.new {
+          div {
             margin-top: 1em;
+          }
+
+          button.new {
             display: block;
             width: 100%;
             background-color: transparent;
@@ -70,6 +73,10 @@ class NewProjectButton extends React.Component {
           
           button.new:hover {
             background-color: #eee;
+          }
+
+          form {
+            width: 100%;
           }
           
           input {
