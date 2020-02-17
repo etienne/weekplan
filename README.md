@@ -12,6 +12,10 @@ echo "{}" > api/store.json
 ## Usage
 
 ```
-npm run dev
 php -S localhost:5000 -t api/
+npm run dev
 ```
+
+## TODO
+
+- Move deployment to Mina
