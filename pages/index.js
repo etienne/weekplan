@@ -14,6 +14,7 @@ class Index extends React.Component {
       projects: {},
       selectedProject: null,
       weeks: {},
+      showArchived: false,
     }
   }
   
@@ -73,6 +74,10 @@ class Index extends React.Component {
       state.editingProject = null;
       return state;
     });
+  }
+
+  setShowArchived(show) {
+    this.setState({ showArchived: show });
   }
   
   countHours(projectId) {
@@ -135,6 +140,8 @@ class Index extends React.Component {
           selectProject={this.selectProject.bind(this)}
           selectedProject={this.state.selectedProject}
           editProject={this.editProject.bind(this)}
+          showArchived={this.state.showArchived}
+          setShowArchived={this.setShowArchived.bind(this)}
         />
         { editedProject && (
           <ProjectEditor name={editedProject.name} color={editedProject.color} note={editedProject.note} archived={editedProject.archived} update={this.updateProject.bind(this)} />

@@ -1,12 +1,17 @@
+import ArchivedProjectsToggle from '../components/ArchivedProjectsToggle';
 import NewProjectButton from '../components/NewProjectButton';
 import Project from '../components/Project';
 
-function ProjectList({ projects, countHours, addProject, selectProject, selectedProject, editProject }) {
+function ProjectList({ projects, countHours, addProject, selectProject, selectedProject, editProject, showArchived, setShowArchived }) {
   return (
     <div className="ProjectList" onClick={selectProject.bind(this, null)}>
       <ul>
         { Object.keys(projects).map((id, i) => {
           const project = projects[id];
+
+          if (!showArchived && project.archived) {
+            return;
+          }
 
           return (
             <li key={i}>
@@ -25,6 +30,7 @@ function ProjectList({ projects, countHours, addProject, selectProject, selected
           );
         })}
         <li key="new"><NewProjectButton addProject={addProject.bind(this)}/></li>
+        <li key="archivedToggle"><ArchivedProjectsToggle showArchived={showArchived} setShowArchived={setShowArchived}/></li>
       </ul>
       <style jsx>{`
         div {
