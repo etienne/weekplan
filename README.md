@@ -6,16 +6,24 @@ A web app to roughly plan weekly workload.
 
 ```
 npm install
-echo "{}" > api/store.json
 ```
 
 ## Usage
 
 ```
-php -S localhost:5000 -t api/
 npm run dev
+php -S localhost:5000 -t api/
 ```
 
-## TODO
+## Deploy
 
-- Move deployment to Mina
+Before the first deployment:
+
+```
+mina setup
+```
+Then:
+
+```
+mina deploy
+```
