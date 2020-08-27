@@ -11,10 +11,10 @@
   },
   "devDependencies": {},
   "scripts": {
-    "dev": "next",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "export": "npm run build && next export"
+    "export": "next build && next export && mkdir out/api && cp api/index.php out/api/index.php"
   },
   "author": "Étienne Després",
   "license": "BSD-2-Clause"
