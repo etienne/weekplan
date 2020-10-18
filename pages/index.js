@@ -15,6 +15,7 @@ class Index extends React.Component {
       selectedProject: null,
       weeks: {},
       showArchived: false,
+      showThisWeek: true,
     }
   }
   
@@ -79,15 +80,21 @@ class Index extends React.Component {
   setShowArchived(show) {
     this.setState({ showArchived: show });
   }
+
+  setShowThisWeek(show) {
+    this.setState({ showThisWeek: show });
+  }
   
   countHours(projectId) {
+    const { weeks, showThisWeek } = this.state;
     let total = 0;
     const weekAgo = new Date();
-    weekAgo.setDate(weekAgo.getDate() - 7);
+    const offset = showThisWeek ? 7 : 0;
+    weekAgo.setDate(weekAgo.getDate() - offset);
 
-    for (const week in this.state.weeks) {
-      if (this.state.weeks.hasOwnProperty(week) && week > weekAgo.valueOf()) {
-        const hours = this.state.weeks[week];
+    for (const week in weeks) {
+      if (weeks.hasOwnProperty(week) && week > weekAgo.valueOf()) {
+        const hours = weeks[week];
         total += Object.values(hours).filter(v => v === projectId).length;
       }
     }
@@ -132,6 +139,7 @@ class Index extends React.Component {
           assignProjectToHour={this.assignProjectToHour.bind(this)}
           weeks={this.state.weeks}
           getProject={this.getProject.bind(this)}
+          showThisWeek={this.state.showThisWeek}
         />
         <ProjectList
           countHours={this.countHours.bind(this)}
@@ -141,7 +149,9 @@ class Index extends React.Component {
           selectedProject={this.state.selectedProject}
           editProject={this.editProject.bind(this)}
           showArchived={this.state.showArchived}
-          setShowArchived={this.setShowArchived.bind(this)}
+          setShowArchived={this.setShowArchived.bind(this, !this.state.showArchived)}
+          showThisWeek={this.state.showThisWeek}
+          setShowThisWeek={this.setShowThisWeek.bind(this, !this.state.showThisWeek)}
         />
         { editedProject && (
           <ProjectEditor name={editedProject.name} color={editedProject.color} note={editedProject.note} archived={editedProject.archived} update={this.updateProject.bind(this)} />

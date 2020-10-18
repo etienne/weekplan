@@ -4,7 +4,7 @@ import Hour from '../components/Hour';
 
 const { publicRuntimeConfig } = getConfig()
 
-function Week({ assignProjectToHour, weekId, offset, date, hours, getProject }) {
+function Week({ assignProjectToHour, weekId, offset, date, hours, getProject, showThisWeek }) {
   const [isPainting, setIsPainting] = useState(false);
   
   function mouseEnterHour(hourId) {
@@ -36,10 +36,10 @@ function Week({ assignProjectToHour, weekId, offset, date, hours, getProject }) 
       }
     }
   }
-      
+  
   return (
     <section>
-      <h2>{ offset === 0 ? 'Cette semaine' : `Semaine du ${weekOf}`}</h2>
+      <h2>{ ((offset === 0) && showThisWeek) ? 'Cette semaine' : `Semaine du ${weekOf}`}</h2>
       <ul>
         { [...Array(publicRuntimeConfig.hoursPerWeek)].map((x, i) => {
           const projectId = hours ? hours[i] : undefined;

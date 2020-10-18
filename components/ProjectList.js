@@ -1,8 +1,19 @@
-import ArchivedProjectsToggle from '../components/ArchivedProjectsToggle';
-import NewProjectButton from '../components/NewProjectButton';
-import Project from '../components/Project';
+import Toggle from './Toggle';
+import NewProjectButton from './NewProjectButton';
+import Project from './Project';
 
-function ProjectList({ projects, countHours, addProject, selectProject, selectedProject, editProject, showArchived, setShowArchived }) {
+function ProjectList({
+  projects,
+  countHours,
+  addProject,
+  selectProject,
+  selectedProject,
+  editProject,
+  showArchived,
+  setShowArchived,
+  showThisWeek,
+  setShowThisWeek,
+}) {
   return (
     <div className="ProjectList" onClick={selectProject.bind(this, null)}>
       <ul>
@@ -30,7 +41,22 @@ function ProjectList({ projects, countHours, addProject, selectProject, selected
           );
         })}
         <li key="new"><NewProjectButton addProject={addProject.bind(this)}/></li>
-        <li key="archivedToggle"><ArchivedProjectsToggle showArchived={showArchived} setShowArchived={setShowArchived}/></li>
+        <li key="thisWeekToggle">
+          <Toggle
+            id="showThisWeek"
+            label={'Afficher cette semaine'}
+            value={showThisWeek}
+            onChange={setShowThisWeek}
+          />
+        </li>
+        <li key="archivedToggle">
+          <Toggle
+            id="showArchived"
+            label={'Afficher les projets archivés'}
+            value={showArchived}
+            onChange={setShowArchived}
+          />
+        </li>
       </ul>
       <style jsx>{`
         div {

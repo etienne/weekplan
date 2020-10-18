@@ -1,15 +1,16 @@
 import getConfig from 'next/config';
-import Week from '../components/Week';
+import Week from './Week';
 
 const { publicRuntimeConfig } = getConfig()
 
-function Timeline({ assignProjectToHour, weeks, getProject }) {
+function Timeline({ assignProjectToHour, weeks, getProject, showThisWeek }) {
   return (
     <ul className="Timeline">
       { [...Array(publicRuntimeConfig.visibleWeeks)].map((x, i) => {
         const date = new Date();
+        const offset = showThisWeek ? date.getDay() || 7 : 0;
         date.setHours(0, 0, 0, 0);
-        date.setDate(date.getDate() - (date.getDay() || 7) + 1 + (i * 7));
+        date.setDate(date.getDate() - offset + 1 + (i * 7));
         const weekId = date.valueOf();
         
         return (
@@ -21,6 +22,7 @@ function Timeline({ assignProjectToHour, weeks, getProject }) {
               assignProjectToHour={assignProjectToHour}
               getProject={getProject}
               offset={i}
+              showThisWeek={showThisWeek}
             />
           </li>
         );
